@@ -9,6 +9,7 @@ ehthumbs.db
 ehthumbs_vista.db
 
 .idea
+vendor
 
 # Dump file
 *.stackdump
