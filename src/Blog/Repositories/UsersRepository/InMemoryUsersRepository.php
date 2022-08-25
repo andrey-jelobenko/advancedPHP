@@ -1,11 +1,11 @@
 <?php
 
-namespace GeekBrains\LevelTwo\Blog\Repositories;
+namespace GeekBrains\LevelTwo\Blog\Repositories\UsersRepository;
 
 use GeekBrains\LevelTwo\Blog\Exceptions\UserNotFoundException;
 use GeekBrains\LevelTwo\Blog\User;
 
-class InMemoryUsersRepository
+class InMemoryUsersRepository implements UsersRepositoryInterface
 {
 
     private array $users = [];
@@ -28,7 +28,7 @@ class InMemoryUsersRepository
                 return $user;
             }
         }
-        throw new UserNotFoundException("User not found: $id" . PHP_EOL);
+        throw new UserNotFoundException("User not found: $id");
     }
 
 }

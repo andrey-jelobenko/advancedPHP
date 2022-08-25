@@ -2,64 +2,78 @@
 
 namespace GeekBrains\LevelTwo\Blog;
 
-use GeekBrains\LevelTwo\Person\Person;
 
 class Post
 {
     private int $id;
-    private User $author;
-    private string $title;
+    private User $user;
     private string $text;
 
-    /**
-     * @param int $id
-     * @param User $author
-     * @param string $title
-     * @param string $text
-     */
-    public function __construct(int $id, User $author, string $title, string $text)
+    public function __construct(
+        int $id,
+        User $user,
+        string $text
+    )
     {
         $this->id = $id;
-        $this->author = $author;
-        $this->title = $title;
         $this->text = $text;
-    }
-
-    public function __toString()
-    {
-        return $this->author->getUsername() . ' на тему "' . $this->title . '" пишет: ' . $this->text  . PHP_EOL;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
+        $this->user = $user;
     }
 
     /**
      * @return int
      */
-    public function getId(): int
+    public function id(): int
     {
         return $this->id;
     }
 
     /**
-     * @return User
+     * @param int $id
      */
-    public function getAuthor(): User
+    public function setId(int $id): void
     {
-        return $this->author;
+        $this->id = $id;
     }
 
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
+    }
+
+
+
+    /**
+     * @return string
+     */
+    public function getText(): string
+    {
+        return $this->text;
+    }
+
+    /**
+     * @param string $text
+     */
+    public function setText(string $text): Post
+    {
+        $this->text = $text;
+        return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->user . ' пишет: ' . $this->text  . PHP_EOL;
+    }
 }
