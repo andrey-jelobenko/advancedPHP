@@ -4,28 +4,14 @@ namespace GeekBrains\LevelTwo\Blog;
 
 class Comment
 {
-    private int $id;
-    private User $author;
-    private Post $post;
-    private string $text;
 
-    /**
-     * @param int $id
-     * @param User $author
-     * @param Post $post
-     * @param string $text
-     */
-    public function __construct(int $id, User $author, Post $post, string $text)
+    public function __construct(
+        private int $id,
+        private User $user,
+        private Post $post,
+        private string $text
+    )
     {
-        $this->id = $id;
-        $this->author = $author;
-        $this->post = $post;
-        $this->text = $text;
-    }
-
-    function __toString(): string
-    {
-        return $this->author->getUsername() . ' на тему поста с id ' . $this->post->getId() . ' автора ' . $this->post->getAuthor() . ' пишет: ' . $this->getText();
     }
 
     /**
@@ -45,27 +31,27 @@ class Comment
     }
 
     /**
-     * @return int
+     * @return User
      */
-    public function getAuthorId(): int
+    public function getUser(): User
     {
-        return $this->author->id();
+        return $this->user;
     }
 
     /**
-     * @param User $author
+     * @param User $user
      */
-    public function setAuthor(User $author): void
+    public function setUser(User $user): void
     {
-        $this->author = $author;
+        $this->user = $user;
     }
 
     /**
-     * @return int
+     * @return Post
      */
-    public function getPostId(): int
+    public function getPost(): Post
     {
-        return $this->post->getId();
+        return $this->post;
     }
 
     /**
@@ -90,6 +76,10 @@ class Comment
     public function setText(string $text): void
     {
         $this->text = $text;
+    }
+
+    public function __toString() {
+        return $this->user . " пишет Коммент " . $this->text;
     }
 
 }
