@@ -6,7 +6,7 @@ class Comment
 {
 
     public function __construct(
-        private int $id,
+        private UUID $id,
         private User $user,
         private Post $post,
         private string $text
@@ -17,17 +17,9 @@ class Comment
     /**
      * @return int
      */
-    public function getId(): int
+    public function id(): UUID
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     /**

@@ -2,38 +2,32 @@
 
 namespace GeekBrains\LevelTwo\Blog;
 
-
 class Post
 {
-    private int $id;
+    private UUID $id;
     private User $user;
+    private string $title;
     private string $text;
 
     public function __construct(
-        int $id,
+        UUID $id,
         User $user,
-        string $text
+        string $title,
+        string $text,
     )
     {
         $this->id = $id;
         $this->text = $text;
+        $this->title = $title;
         $this->user = $user;
     }
 
     /**
-     * @return int
+     * @return UUID
      */
-    public function id(): int
+    public function id(): UUID
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -52,7 +46,21 @@ class Post
         $this->user = $user;
     }
 
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
 
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
 
     /**
      * @return string
@@ -70,7 +78,6 @@ class Post
         $this->text = $text;
         return $this;
     }
-
 
     public function __toString()
     {
